@@ -3,7 +3,6 @@
     <div *ngFor="let subInput of val.subInputs; let a = index">
       <div *ngIf="checkEquals(val.value, subInput.condition)" class="card">
         <div class='card-body'>
-
           <div class="form-group">
             <div>
               <label>Question</label>
@@ -81,7 +80,7 @@
 
   <div *ngIf="isNumber(val.type)">
     <div *ngFor="let subInput of val.subInputs; let a = index">
-      <div *ngIf="checkEqualsNumber(val.value, subInput.condition, subInput.equals)">
+      <div *ngIf="checkEqualsNumber(val.value, subInput.condition, subInput.equals)" class="card">
         <div class='card-body'>
 
           <div class="form-group">
