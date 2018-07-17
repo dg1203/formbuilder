@@ -1,0 +1,42 @@
+<div class="form_viewer">
+  <div class="container">
+    <div class="row" *ngFor="let val of form; let i = index">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <div>
+              <label>Question</label>
+              <input class="form-control" type="text" name="question" [(ngModel)]="val.question" readonly />
+            </div>
+          </div>
+
+          <!-- If type is radio -->
+            <div *ngIf="isRadio(val.type)" class="form-group">
+              <select class="form-control" name="value" [(ngModel)]="val.value">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          <!-- -->
+
+          <!-- If type is text -->
+            <div *ngIf="isText(val.type)" class="form-group">
+              <input class="form-control" type="text" name="value" [(ngModel)]="val.value" />
+            </div>
+          <!-- -->
+
+          <!-- If type is number -->
+            <div *ngIf="isNumber(val.type)" class="form-group">
+              <input class="form-control" type="number" name="value" [(ngModel)]="val.value" />
+            </div>
+          <!-- -->
+
+        </div>
+      </div>
+
+      <app-view-subinputs [val]="val" class="width"></app-view-subinputs>
+
+    </div>
+  </div>
+</div>

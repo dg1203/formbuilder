@@ -1,0 +1,121 @@
+<div class="subinputs">
+  <div *ngIf="isRadio(val.type)">
+    <div *ngFor="let subInput of val.subInputs; let a = index">
+      <div *ngIf="checkEquals(val.value, subInput.condition)" class="card">
+        <div class='card-body'>
+
+          <div class="form-group">
+            <div>
+              <label>Question</label>
+              <input class="form-control" type="text" name="question" [(ngModel)]="subInput.question" readonly />
+            </div>
+          </div>
+
+          <!-- If type is radio -->
+            <div *ngIf="isRadio(subInput.type)" class="form-group">
+              <select class="form-control" name="value" [(ngModel)]="subInput.value">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          <!-- -->
+
+          <!-- If type is text -->
+            <div *ngIf="isText(subInput.type)" class="form-group">
+              <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+          <!-- If type is number -->
+            <div *ngIf="isNumber(subInput.type)" class="form-group">
+              <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+        </div>
+      </div>
+      <app-view-subinputs class="width" [val]="subInput"></app-view-subinputs>
+    </div>
+  </div>
+
+  <div *ngIf="isText(val.type)">
+    <div *ngFor="let subInput of val.subInputs; let a = index">
+      <div *ngIf="checkEquals(val.value, subInput.condition)" class="card">
+        <div class='card-body'>
+
+          <div class="form-group">
+            <div>
+              <label>Question</label>
+              <input class="form-control" type="text" name="question" [(ngModel)]="subInput.question" readonly />
+            </div>
+          </div>
+
+          <!-- If type is radio -->
+            <div *ngIf="isRadio(subInput.type)" class="form-group">
+              <select class="form-control" name="value" [(ngModel)]="subInput.value">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          <!-- -->
+
+          <!-- If type is text -->
+            <div *ngIf="isText(subInput.type)" class="form-group">
+              <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+          <!-- If type is number -->
+            <div *ngIf="isNumber(subInput.type)" class="form-group">
+              <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+        </div>
+      </div>
+      <app-view-subinputs class="width" [val]="subInput"></app-view-subinputs>
+    </div>
+  </div>
+
+  <div *ngIf="isNumber(val.type)">
+    <div *ngFor="let subInput of val.subInputs; let a = index">
+      <div *ngIf="checkEqualsNumber(val.value, subInput.condition, subInput.equals)">
+        <div class='card-body'>
+
+          <div class="form-group">
+            <div>
+              <label>Question</label>
+              <input class="form-control" type="text" name="question" [(ngModel)]="subInput.question" readonly />
+            </div>
+          </div>
+
+          <!-- If type is radio -->
+            <div *ngIf="isRadio(subInput.type)" class="form-group">
+              <select class="form-control" name="value" [(ngModel)]="subInput.value">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          <!-- -->
+
+          <!-- If type is text -->
+            <div *ngIf="isText(subInput.type)" class="form-group">
+              <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+          <!-- If type is number -->
+            <div *ngIf="isNumber(subInput.type)" class="form-group">
+              <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
+            </div>
+          <!-- -->
+
+        </div>
+      </div>
+      <app-view-subinputs class="width" [val]="subInput"></app-view-subinputs>
+    </div>
+  </div>
+</div>

@@ -4,16 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
+import { ViewComponent } from './components/view/view.component';
+import { SubinputsComponent } from './components/subinputs/subinputs.component';
+import { ViewSubinputsComponent } from './components/view-subinputs/view-subinputs.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewComponent,
+    SubinputsComponent,
+    ViewSubinputsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

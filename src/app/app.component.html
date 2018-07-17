@@ -1,70 +1,47 @@
-<div class="row" style="margin-top: 25px" *ngFor="let val of form; let i = index">
-  <div class="col-lg-6 card">
+<div (ngModelChange)="saveLocal()">
+<button *ngIf="isForm" (click)="showFormView()" type="button" class="btn btn-dark btn-lg">{{preview}}</button>
+<div class="row" *ngFor="let val of form; let i = index">
+  <div class="card">
     <div class='card-body'>
       <div class="form-group">
-        <div style="margin-bottom: 25px">
+        <div class="margin_bottom">
           <label>Question</label>
           <input class="form-control" type="text" name="question" [(ngModel)]="val.question"/>
         </div>
-        <div style="margin-bottom: 25px">
-          <select class="form-control" name="type" [(ngModel)]="val.condition">
+        <div class="margin_bottom">
+          <label>Type</label>
+          <select class="form-control" name="type" [(ngModel)]="val.type">
             <option value="1">Yes / No</option>
             <option value="2">Text</option>
             <option value="3">Number</option>
           </select>
         </div>
-        <div style="margin-bottom: 25px">
-          <button class="btn btn-danger" style="float: right;">Delete</button>
-          <button (click)="addSubInput(i)" class="btn btn-success" style="float: right; margin-right: 15px">Add Sub-input</button>
+        <div class="margin_bottom object_buttons">
+          <button (click)="addSubInput(val)" class="btn btn-success">Add Sub-input</button>
+          <button (click)="removeElement(val)" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-6 card" style="margin-top: 25px; margin-left: 25px" *ngFor="let subInput of val.subInputs; let i = index">
-    <div class='card-body'>
-      <div class="form-group">
-        <div style="margin-bottom: 25px; overflow: hidden;">
-          <div style="float: left; width: 49%">
-            <select class="form-control" name="condition" [(ngModel)]="val.subInput.condition">
-              <option value="1">Equals</option>
-              <option value="2">Greater than</option>
-              <option value="3">Less than</option>
-            </select>
-          </div>
-          <div style="float: right; width: 49%">
-            <label>Equals</label>
-            <select class="form-control" name="equals" [(ngModel)]="val.subInput.equals">
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-        </div>
-        <div style="margin-bottom: 25px">
-          <label>Question</label>
-          <input class="form-control" type="text" name="question" [(ngModel)]="val.subInput.question"/>
-        </div>
-        <div style="margin-bottom: 25px">
-          <select class="form-control" name="type" [(ngModel)]="val.subInput.type">
-            <option value="1">Yes / No</option>
-              <option value="2">Text</option>
-              <option value="3">Number</option>
-          </select>
-        </div>
-        <div style="margin-bottom: 25px">
-            <button class="btn btn-danger" style="float: right;">Delete</button>
-            <button (click)="addSubInput(i)" class="btn btn-success" style="float: right; margin-right: 15px">Add Sub-input</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <app-subinputs class="margin_top width" [val]="val"></app-subinputs>
+
 </div>
 
 <button
-  class="btn btn-success btn-lg"
-  style="margin-top: 25px"
-  onClick={this.addInput}
-  (click)="addInput()"
+  class="btn btn-success btn-lg margin_bottom"
+  (click)="addInput(val)"
 >
   Add input
 </button>
 
+<button
+  class="btn btn-success btn-lg margin_bottom"
+  (click)="downloadFile()"
+>
+  Export file
+</button>
+<a id="downloadAnchorElem" style="display:none"></a>
+<app-view *ngIf="formView" [form]="form"></app-view>
+
+<div>
