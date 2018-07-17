@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as saveAs from 'file-saver';
 import { ViewComponent } from './components/view/view.component';
 import { SubinputsComponent } from './components/subinputs/subinputs.component';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
@@ -16,7 +15,7 @@ export class AppComponent {
     formView = false;
     preview = 'Preview';
 
-    constructor(private sanitizer: DomSanitizer) {}
+    constructor() {}
   
     ngOnInit() {
       if(localStorage.form) {
