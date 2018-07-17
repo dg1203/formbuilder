@@ -20,14 +20,17 @@ export class AppComponent {
     ngOnInit() {
       if(localStorage.form) {
         this.form = JSON.parse(localStorage.form);
-        this.isForm = true;
       }
       else {
         localStorage.setItem('form', JSON.stringify(this.form));
       }
       setInterval(() => {
         localStorage.setItem('form', JSON.stringify(this.form));
-      }, 1000);
+        if(this.form.length > 0)
+          this.isForm = true;
+        else
+          this.isForm = false;
+      }, 500);
     }
   
     addInput(object) {
