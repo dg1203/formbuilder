@@ -4,7 +4,7 @@
         <div class="form-group">
 
           <!-- If parent input is Radio -->
-          <div class="condition" *ngIf="isRadio(val.type)">
+          <div class="condition" *ngIf="val.type == 1">
             <div>
               <label>Equals</label>
               <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
@@ -22,7 +22,7 @@
           <!-- -->
 
           <!-- If parent input is text -->
-          <div class="condition" *ngIf="isText(val.type)">
+          <div class="condition" *ngIf="val.type == 2">
             <div>
               <label>Equals</label>
               <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
@@ -37,7 +37,7 @@
           <!-- -->
 
           <!-- If parent input is number -->
-          <div class="condition" *ngIf="isNumber(val.type)">
+          <div class="condition" *ngIf="val.type == 3">
             <div>
               <label>Equals</label>
               <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
@@ -67,10 +67,10 @@
           </div>
           <div>
               <button (click)="addSubInput(subInput)" class="btn btn-success">Add Sub-input</button>
-              <button (click)="removeElement(subInput)" class="btn btn-danger">Delete</button>
+              <button (click)="removeSubInput(subInput)" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
     </div>
-    <app-subinputs *ngIf="isSubinput(subInput)" class="width" [val]="subInput"></app-subinputs>
+    <app-subinputs *ngIf="isSubinput(subInput)" (subinputEvent)="addSubInput($event)" class="width" [val]="subInput"></app-subinputs>
   </div>

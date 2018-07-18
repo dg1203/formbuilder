@@ -1,4 +1,4 @@
-<div (ngModelChange)="saveLocal()">
+<div>
 <button *ngIf="isForm" (click)="showFormView()" type="button" class="btn btn-dark btn-lg">{{preview}}</button>
 <div class="row" *ngFor="let val of form; let i = index">
   <div class="card">
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <app-subinputs class="margin_top width" [val]="val"></app-subinputs>
+  <app-subinputs (subinputEvent)="addSubInput($event)" class="margin_top width" [val]="val"></app-subinputs>
 
 </div>
 

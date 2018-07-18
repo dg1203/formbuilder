@@ -1,5 +1,5 @@
 <div class="subinputs">
-  <div *ngIf="isRadio(val.type)">
+  <div *ngIf="val.type == 1">
     <div *ngFor="let subInput of val.subInputs; let a = index">
       <div *ngIf="checkEquals(val.value, subInput.condition)" class="card">
         <div class='card-body'>
@@ -11,7 +11,7 @@
           </div>
 
           <!-- If type is radio -->
-            <div *ngIf="isRadio(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 1" class="form-group">
               <select class="form-control" name="value" [(ngModel)]="subInput.value">
                 <option value=""></option>
                 <option value="yes">Yes</option>
@@ -21,13 +21,13 @@
           <!-- -->
 
           <!-- If type is text -->
-            <div *ngIf="isText(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 2" class="form-group">
               <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->
 
           <!-- If type is number -->
-            <div *ngIf="isNumber(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 3" class="form-group">
               <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <div *ngIf="isText(val.type)">
+  <div *ngIf="val.type == 2">
     <div *ngFor="let subInput of val.subInputs; let a = index">
       <div *ngIf="checkEquals(val.value, subInput.condition)" class="card">
         <div class='card-body'>
@@ -51,7 +51,7 @@
           </div>
 
           <!-- If type is radio -->
-            <div *ngIf="isRadio(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 1" class="form-group">
               <select class="form-control" name="value" [(ngModel)]="subInput.value">
                 <option value=""></option>
                 <option value="yes">Yes</option>
@@ -61,13 +61,13 @@
           <!-- -->
 
           <!-- If type is text -->
-            <div *ngIf="isText(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 2" class="form-group">
               <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->
 
           <!-- If type is number -->
-            <div *ngIf="isNumber(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 3" class="form-group">
               <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <div *ngIf="isNumber(val.type)">
+  <div *ngIf="val.type == 3">
     <div *ngFor="let subInput of val.subInputs; let a = index">
       <div *ngIf="checkEqualsNumber(val.value, subInput.condition, subInput.equals)" class="card">
         <div class='card-body'>
@@ -91,7 +91,7 @@
           </div>
 
           <!-- If type is radio -->
-            <div *ngIf="isRadio(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 1" class="form-group">
               <select class="form-control" name="value" [(ngModel)]="subInput.value">
                 <option value=""></option>
                 <option value="yes">Yes</option>
@@ -101,13 +101,13 @@
           <!-- -->
 
           <!-- If type is text -->
-            <div *ngIf="isText(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 2" class="form-group">
               <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->
 
           <!-- If type is number -->
-            <div *ngIf="isNumber(subInput.type)" class="form-group">
+            <div *ngIf="subInput.type == 3" class="form-group">
               <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
             </div>
           <!-- -->

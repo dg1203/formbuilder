@@ -1,46 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ViewSubinputsComponent } from '../view-subinputs/view-subinputs.component'
+import { Component, Input } from '@angular/core';
+import { ViewSubinputsComponent } from '../view-subinputs/view-subinputs.component';
 
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  templateUrl: './view.component.html'
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent {
 
-  @Input() form = [];
-
-  constructor() { }
-
-  ngOnInit() {
-    
-  }
-
-  isRadio(type) {
-    if(type == 1) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  isText(type) {
-    if(type == 2) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  isNumber(type) {
-    if(type == 3) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+  @Input() form: Array<any> = [];
 
 }

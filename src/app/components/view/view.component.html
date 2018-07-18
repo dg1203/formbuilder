@@ -11,7 +11,7 @@
           </div>
 
           <!-- If type is radio -->
-            <div *ngIf="isRadio(val.type)" class="form-group">
+            <div *ngIf="val.type == 1" class="form-group">
               <select class="form-control" name="value" [(ngModel)]="val.value">
                 <option value=""></option>
                 <option value="yes">Yes</option>
@@ -21,13 +21,13 @@
           <!-- -->
 
           <!-- If type is text -->
-            <div *ngIf="isText(val.type)" class="form-group">
+            <div *ngIf="val.type == 2" class="form-group">
               <input class="form-control" type="text" name="value" [(ngModel)]="val.value" />
             </div>
           <!-- -->
 
           <!-- If type is number -->
-            <div *ngIf="isNumber(val.type)" class="form-group">
+            <div *ngIf="val.type == 3" class="form-group">
               <input class="form-control" type="number" name="value" [(ngModel)]="val.value" />
             </div>
           <!-- -->

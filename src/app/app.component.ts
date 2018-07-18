@@ -1,49 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewComponent } from './components/view/view.component';
 import { SubinputsComponent } from './components/subinputs/subinputs.component';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    form = [];
-    isForm = false;
-    formView = false;
-    preview = 'Preview';
+    form: Array<any> = [];
+    isForm: boolean = false;
+    formView: boolean = false;
+    preview: string = 'Preview';
 
-    constructor() {}
-  
     ngOnInit() {
-      if(localStorage.form) {
+      if (localStorage.form) {
         this.form = JSON.parse(localStorage.form);
-      }
-      else {
+      } else {
         localStorage.setItem('form', JSON.stringify(this.form));
       }
       setInterval(() => {
         localStorage.setItem('form', JSON.stringify(this.form));
-        if(this.form.length > 0)
+        if (this.form.length > 0) {
           this.isForm = true;
-        else
+        } else {
           this.isForm = false;
+        }
       }, 500);
     }
-  
-    addInput(object) {
+
+    addInput(object: object) {
       this.isForm = true;
       const newInput = {
         question: '',
         type: 1,
         subInputs: [],
         value: ''
-      }
+      };
       this.form.push(newInput);
     }
 
-    addSubInput(val) {
+    addSubInput(val: object) {
       const newSubInput = {
         question: '',
         type: 1,
@@ -51,56 +49,33 @@ export class AppComponent {
         condition: '',
         subInputs: [],
         value: ''
-      }
-      val.subInputs.push(newSubInput);
-    }
-
-    isRadio(type) {
-      if(type == 1) {
-        return true;
-      }
-      else
-        return false;
-    }
-
-    isText(type) {
-      if(type == 2)
-        return true;
-      else
-        return false;
-    }
-
-    isNumber(type) {
-      if(type == 3)
-        return true;
-      else
-        return false;
+      };
+      val['subInputs'].push(newSubInput);
     }
 
     showFormView() {
-      if(this.formView == false) {
+      if (this.formView === false) {
         this.preview = 'Close';
         this.formView = true;
-      }
-      else {
+      } else {
         this.preview = 'Preview';
         this.formView = false;
       }
     }
-    
-    removeElement(val) {
+
+    removeElement(val: object) {
       this.form.map((input, index) => {
-        if(val == input) {
+        if (val === input) {
           this.form.splice(index, 1);
         }
       });
     }
 
-    downloadFile(){
-      let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.form));
-      let dlAnchorElem = document.getElementById('downloadAnchorElem');
-      dlAnchorElem.setAttribute("href",     dataStr     );
-      dlAnchorElem.setAttribute("download", "form.json");
+    downloadFile() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.form));
+      const dlAnchorElem = document.getElementById('downloadAnchorElem');
+      dlAnchorElem.setAttribute('href', dataStr);
+      dlAnchorElem.setAttribute('download', 'form.json');
       dlAnchorElem.click();
     }
 
