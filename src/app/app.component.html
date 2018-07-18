@@ -6,11 +6,11 @@
       <div class="form-group">
         <div class="margin_bottom">
           <label>Question</label>
-          <input class="form-control" type="text" name="question" [(ngModel)]="val.question"/>
+          <input (ngModelChange)="saveChanges()" class="form-control" type="text" name="question" [(ngModel)]="val.question"/>
         </div>
         <div class="margin_bottom">
           <label>Type</label>
-          <select class="form-control" name="type" [(ngModel)]="val.type">
+          <select (ngModelChange)="saveChanges()" class="form-control" name="type" [(ngModel)]="val.type">
             <option value="1">Yes / No</option>
             <option value="2">Text</option>
             <option value="3">Number</option>
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <app-subinputs (subinputEvent)="addSubInput($event)" class="margin_top width" [val]="val"></app-subinputs>
+  <app-subinputs (subinputEvent)="addSubInput($event)" (saveChangesEvent)="saveChanges()" class="margin_top width" [val]="val"></app-subinputs>
 
 </div>
 

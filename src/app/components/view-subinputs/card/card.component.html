@@ -1,0 +1,31 @@
+<div class='card-body'>
+  <div class="form-group">
+    <div>
+      <label>Question</label>
+      <input class="form-control" type="text" name="question" [(ngModel)]="subInput.question" readonly />
+    </div>
+  </div>
+
+  <!-- If type is radio -->
+    <div *ngIf="subInput.type == 1" class="form-group">
+      <select class="form-control" name="value" [(ngModel)]="subInput.value">
+        <option value=""></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  <!-- -->
+
+  <!-- If type is text -->
+    <div *ngIf="subInput.type == 2" class="form-group">
+      <input class="form-control" type="text" name="value" [(ngModel)]="subInput.value" />
+    </div>
+  <!-- -->
+
+  <!-- If type is number -->
+    <div *ngIf="subInput.type == 3" class="form-group">
+      <input class="form-control" type="number" name="value" [(ngModel)]="subInput.value" />
+    </div>
+  <!-- -->
+
+</div>

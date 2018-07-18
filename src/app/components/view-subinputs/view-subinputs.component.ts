@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-view-subinputs',
@@ -17,20 +18,20 @@ export class ViewSubinputsComponent {
     }
 
     checkEqualsNumber(value: any, condition: any, equals: any) {
-      if (equals === 1) {
-        if (value === condition) {
+      if (parseInt(equals , 10) === 1) {
+        if (parseInt(value , 10) === parseInt(condition , 10)) {
           return true;
         } else {
           return false;
         }
-      } else if (equals === 2) {
-        if (value > condition) {
+      } else if (parseInt(equals , 10) === 2) {
+        if (parseInt(value , 10) > parseInt(condition , 10)) {
           return true;
         } else {
           return false;
         }
-      } else if (equals === 3) {
-        if (value < condition) {
+      } else if (parseInt(equals , 10) === 3) {
+        if (parseInt(value , 10) < parseInt(condition , 10)) {
           return true;
         } else {
           return false;

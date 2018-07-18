@@ -7,13 +7,13 @@
           <div class="condition" *ngIf="val.type == 1">
             <div>
               <label>Equals</label>
-              <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
+              <select (ngModelChange)="saveChanges()" class="form-control" name="equals" [(ngModel)]="subInput.equals">
                 <option value="1">Equals</option>
               </select>
             </div>
             <div>
               <label>Condition</label>
-              <select class="form-control" name="equals" [(ngModel)]="subInput.condition">
+              <select (ngModelChange)="saveChanges()" class="form-control" name="equals" [(ngModel)]="subInput.condition">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
               </select>
@@ -25,13 +25,13 @@
           <div class="condition" *ngIf="val.type == 2">
             <div>
               <label>Equals</label>
-              <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
+              <select (ngModelChange)="saveChanges()" class="form-control" name="equals" [(ngModel)]="subInput.equals">
                 <option value="1">Equals</option>
               </select>
             </div>
             <div>
               <label>Condition</label>
-              <input class="form-control" type="text" name="condition" [(ngModel)]="subInput.condition"/>
+              <input (ngModelChange)="saveChanges()" class="form-control" type="text" name="condition" [(ngModel)]="subInput.condition"/>
             </div>
           </div>
           <!-- -->
@@ -40,7 +40,7 @@
           <div class="condition" *ngIf="val.type == 3">
             <div>
               <label>Equals</label>
-              <select class="form-control" name="equals" [(ngModel)]="subInput.equals">
+              <select (ngModelChange)="saveChanges()" class="form-control" name="equals" [(ngModel)]="subInput.equals">
                 <option value="1">Equals</option>
                 <option value="2">Greater than</option>
                 <option value="3">Less than</option>
@@ -48,18 +48,18 @@
             </div>
             <div>
               <label>Condition</label>
-              <input class="form-control" type="number" name="condition" [(ngModel)]="subInput.condition"/>
+              <input (ngModelChange)="saveChanges()" class="form-control" type="number" name="condition" [(ngModel)]="subInput.condition"/>
             </div>
           </div>
           <!-- -->
 
           <div>
             <label>Question</label>
-            <input class="form-control" type="text" name="question" [(ngModel)]="subInput.question"/>
+            <input (ngModelChange)="saveChanges()" class="form-control" type="text" name="question" [(ngModel)]="subInput.question"/>
           </div>
           <div>
             <label>Type</label>
-            <select class="form-control" name="type" [(ngModel)]="subInput.type">
+            <select (ngModelChange)="saveChanges()" class="form-control" name="type" [(ngModel)]="subInput.type">
               <option value="1">Yes / No</option>
                 <option value="2">Text</option>
                 <option value="3">Number</option>
@@ -72,5 +72,5 @@
         </div>
       </div>
     </div>
-    <app-subinputs *ngIf="isSubinput(subInput)" (subinputEvent)="addSubInput($event)" class="width" [val]="subInput"></app-subinputs>
+    <app-subinputs *ngIf="isSubinput(subInput)" (saveChangesEvent)="saveChanges()" (subinputEvent)="addSubInput($event)" class="width" [val]="subInput"></app-subinputs>
   </div>

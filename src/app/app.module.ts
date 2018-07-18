@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ViewComponent } from './components/view/view.component';
 import { SubinputsComponent } from './components/subinputs/subinputs.component';
 import { ViewSubinputsComponent } from './components/view-subinputs/view-subinputs.component';
+import { CardComponent } from './components/view-subinputs/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewComponent,
     SubinputsComponent,
-    ViewSubinputsComponent
+    ViewSubinputsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

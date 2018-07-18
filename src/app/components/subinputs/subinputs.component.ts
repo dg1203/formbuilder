@@ -8,7 +8,7 @@ export class SubinputsComponent {
 
   @Input() val: Array<any> = [];
   @Output() subinputEvent = new EventEmitter<object>();
-  @Output() removeElementEvent = new EventEmitter<object>();
+  @Output() saveChangesEvent = new EventEmitter<object>();
 
     isSubinput(subInput: object) {
       if (subInput['subInputs'].length > 0) {
@@ -22,12 +22,17 @@ export class SubinputsComponent {
       this.subinputEvent.emit(subInput);
     }
 
+    saveChanges() {
+      this.saveChangesEvent.emit();
+    }
+
     removeSubInput(subInput: object) {
       this.val['subInputs'].map((input, index) => {
         if (subInput === input) {
           this.val['subInputs'].splice(index, 1);
         }
       });
+      this.saveChanges();
     }
 
 }

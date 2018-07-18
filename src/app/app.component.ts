@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ViewComponent } from './components/view/view.component';
 import { SubinputsComponent } from './components/subinputs/subinputs.component';
 
+class Form {
+  question: string;
+  type: number;
+  subInputs: Array<any>;
+  value: any;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,25 +15,32 @@ import { SubinputsComponent } from './components/subinputs/subinputs.component';
 })
 export class AppComponent implements OnInit {
 
-    form: Array<any> = [];
+    form: any = [];
     isForm: boolean = false;
     formView: boolean = false;
     preview: string = 'Preview';
 
     ngOnInit() {
+      this.form = new Form();
       if (localStorage.form) {
         this.form = JSON.parse(localStorage.form);
+        this.checkLength();
       } else {
-        localStorage.setItem('form', JSON.stringify(this.form));
+        this.saveChanges();
       }
-      setInterval(() => {
-        localStorage.setItem('form', JSON.stringify(this.form));
-        if (this.form.length > 0) {
-          this.isForm = true;
-        } else {
-          this.isForm = false;
-        }
-      }, 500);
+    }
+
+    saveChanges() {
+      localStorage.setItem('form', JSON.stringify(this.form));
+      this.checkLength();
+    }
+
+    checkLength() {
+      if (this.form.length > 0) {
+        this.isForm = true;
+      } else {
+        this.isForm = false;
+      }
     }
 
     addInput(object: object) {
@@ -39,6 +52,7 @@ export class AppComponent implements OnInit {
         value: ''
       };
       this.form.push(newInput);
+      this.saveChanges();
     }
 
     addSubInput(val: object) {
@@ -51,6 +65,7 @@ export class AppComponent implements OnInit {
         value: ''
       };
       val['subInputs'].push(newSubInput);
+      this.saveChanges();
     }
 
     showFormView() {
@@ -69,6 +84,7 @@ export class AppComponent implements OnInit {
           this.form.splice(index, 1);
         }
       });
+      this.saveChanges();
     }
 
     downloadFile() {
