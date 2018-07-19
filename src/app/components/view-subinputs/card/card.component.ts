@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() subInput: Array<any> = [];
+  @Input() subInput: Array<object> = [];
 
 }

@@ -7,6 +7,6 @@ import { ViewSubinputsComponent } from '../view-subinputs/view-subinputs.compone
 })
 export class ViewComponent {
 
-  @Input() form: Array<any> = [];
+  @Input() form: Array<object> = [];
 
 }

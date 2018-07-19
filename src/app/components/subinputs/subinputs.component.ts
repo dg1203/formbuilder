@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SubinputsComponent {
 
-  @Input() val: Array<any> = [];
+  @Input() val: Array<object> = [];
   @Output() subinputEvent = new EventEmitter<object>();
   @Output() saveChangesEvent = new EventEmitter<object>();
 

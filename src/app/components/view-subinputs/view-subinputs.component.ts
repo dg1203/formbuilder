@@ -7,9 +7,9 @@ import { CardComponent } from './card/card.component';
 })
 export class ViewSubinputsComponent {
 
-  @Input() val: Array<any> = [];
+  @Input() val: Array<object> = [];
 
-    checkEquals(value: any, condition: any) {
+    checkEquals(value: string, condition: string) {
       if (value === condition) {
         return true;
       } else {
@@ -17,7 +17,7 @@ export class ViewSubinputsComponent {
       }
     }
 
-    checkEqualsNumber(value: any, condition: any, equals: any) {
+    checkEqualsNumber(value: string, condition: string, equals: string) {
       if (parseInt(equals , 10) === 1) {
         if (parseInt(value , 10) === parseInt(condition , 10)) {
           return true;

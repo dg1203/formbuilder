@@ -5,8 +5,8 @@ import { SubinputsComponent } from './components/subinputs/subinputs.component';
 class Form {
   question: string;
   type: number;
-  subInputs: Array<any>;
-  value: any;
+  subInputs: Array<object>;
+  value: string;
 }
 
 @Component({
@@ -15,13 +15,13 @@ class Form {
 })
 export class AppComponent implements OnInit {
 
-    form: any = [];
+    form: Array<object> = [];
     isForm: boolean = false;
     formView: boolean = false;
     preview: string = 'Preview';
 
     ngOnInit() {
-      this.form = new Form();
+      this.form = Object.values(new Form());
       if (localStorage.form) {
         this.form = JSON.parse(localStorage.form);
         this.checkLength();
